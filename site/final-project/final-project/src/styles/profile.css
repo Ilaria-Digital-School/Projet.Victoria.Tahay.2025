@@ -1,0 +1,422 @@
+/* --------------- Admin Button Styling --------------- */
+/* Styles for the "Manage Reservations" button */
+.admin-provider-button {
+  display: block;
+  text-align: center;
+  background: linear-gradient(135deg, #172e3a, #214754);
+  color: white;
+  padding: 15px 20px;
+  margin: 0px auto;
+  width: 90%;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Hover effect for admin button */
+.admin-provider-button:hover {
+  background: linear-gradient(135deg, #31302C, #31302C) !important;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  color: #ccc;
+}
+
+
+
+/* --------------- Profile & Reservations Container --------------- */
+/* Main container for user profile and reservations */
+.profile-container, .reservations-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 30px 30px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Profile title styling */
+.profile-container h1 {
+  font-size: 50px;
+  text-align: center;
+}
+  
+
+
+/* --------------- Profile Details Styling --------------- */
+/* Container for profile details */
+.profile-details {
+  border: 1px solid #ccc; 
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 25px; 
+  border-radius: 8px; 
+  box-shadow: #31302C;
+  margin-bottom: 30px;
+}
+
+/* Profile text styles */
+.profile-details p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+  
+
+
+/* --------------- Navigation Buttons --------------- */
+/* Buttons for reservations, logout, and edit actions */
+.reservation-link,  .logout-button, .edit-button {
+  display: inline-block;
+  margin: 10px 15px 10px  0;
+  padding: 10px 10px;
+  background-color: #214754;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+  
+/* Hover effect for navigation buttons */
+.reservation-link:hover, .logout-button:hover, .edit-button:hover {
+  background-color: #31302C !important;
+  color: #ccc;
+}
+
+/* Save and cancel buttons */
+.save-button, .cancel-button {
+  display: inline-block;
+  margin: 5px 0 0 0;
+  padding: 10px 10px !important;
+  background-color: #31302C !important;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Hover effect for save and cancel buttons */
+.save-button:hover, .cancel-button:hover {
+  background-color: #214754 !important;
+}
+
+
+
+/* --------------- Reservations List --------------- */
+/* Removes default list styling */
+.reservations-container ul {
+  list-style: none;
+  padding: 0;
+}
+  
+/* Styles for each reservation item */
+.reservations-container li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+  
+/* Removes bottom border from the last item */
+.reservations-container li:last-child {
+  border-bottom: none;
+}
+  
+/* Reservation item layout */
+.reservation-item {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 10px; 
+  border-bottom: 1px solid #eee; 
+}
+
+
+
+/* --------------- Reservation Item Buttons --------------- */
+/* General button styling inside reservation items */
+.reservation-item button {
+  margin-left: 10px; 
+  padding: 5px 10px; 
+  border: none; 
+  cursor: pointer; 
+  border-radius: 4px; 
+  font-size: 14px;
+}
+
+/* Edit button styles */
+.edit-btn {
+  background-color: #214754; 
+  color: white; 
+}
+
+/* Hover effect for edit button */
+.edit-btn:hover {
+  background-color: #172e3a; 
+}
+
+/* Delete button styles */
+.delete-btn {
+  background-color: #d9534f; 
+  color: white; 
+}
+
+/* Hover effect for delete button */
+.delete-btn:hover {
+  background-color: #b52b27; 
+}
+
+
+
+/* --------------- Popup Styling --------------- */
+/* Full-screen overlay for popup */
+.popup-overlay {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+/* Popup content box */
+.popup-content {
+  background: white; 
+  padding: 20px;
+  border-radius: 8px; 
+  text-align: center; 
+  width: 300px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button container inside popup */
+.popup-buttons {
+  margin-top: 15px; 
+}
+
+/* Confirmation button */
+.confirm-btn {
+  background-color: #214754; 
+  color: white;
+  padding: 10px;
+  border-radius: 4px; 
+  margin-right: 10px; 
+}
+
+/* Hover effect for confirmation button */
+.confirm-btn:hover {
+  background-color: #172e3a; 
+}
+
+/* Cancel button */
+.cancel-btn {
+  background-color: #214754; 
+  color: white; 
+  padding: 10px;
+  border-radius: 4px; 
+}
+
+/* Hover effect for cancel button */
+.cancel-btn:hover {
+  background-color: #31302C; 
+}
+
+
+
+/* --------------- Edit Reservation Form --------------- */
+/* Container for the edit reservation form */
+.edit-reservation-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Styling for form labels */
+.edit-reservation-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Input fields */
+.edit-reservation-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Buttons in edit reservation form */
+.edit-reservation-container button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Submit button */
+.edit-reservation-container button[type="submit"] {
+  background-color: #214754;
+  color: white;
+}
+
+/* Hover effect for submit button */
+.edit-reservation-container button[type="submit"]:hover {
+  background-color: #172e3a;
+}
+
+/* Styling for cancel button */
+.cancel-btn {
+  background-color: #214754;
+  color: white;
+  margin-left: 10px;
+}
+
+/* Styling for cancel button hover */
+.cancel-btn:hover {
+  background-color: #31302C;
+}
+
+/* Styling for confirmation message */
+.confirmation {
+  color: #214754;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+
+/* --------------- Profile Edit Form --------------- */
+/* Layout for profile edit form */
+.profile-edit {
+  display: flex; 
+  flex-direction: column;
+  gap: 10px;  
+  margin-bottom: 25px;
+}
+
+/* Styling for input fields in the edit form */
+.profile-edit input {
+  width: 100%; 
+  padding: 8px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+
+
+/* --------------- Responsive Design --------------- */
+/* Adjusts layout for screens smaller than 450px */
+@media (max-width: 450px) {
+  
+  /* Reduces button size */
+  .admin-provider-button {
+    font-size: 18px;  
+  }
+
+  /* Adjusts container padding */
+  .profile-container, .reservations-container {
+    padding: 20px 15px 10px 15px;
+    margin: 20px 0;
+    width: 100%; 
+    box-sizing: border-box;
+  }
+
+  /* Reduces profile title size */
+  .profile-container h1 {
+    font-size: 30px; 
+  }
+
+  /* Padding and font-size for profile details */
+  .profile-details {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .profile-details p {
+    font-size: 16px;
+    word-wrap: break-word;    
+    overflow-wrap: break-word;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Edit-button */
+  .profile-details button {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 250px;
+    box-sizing: border-box;
+  }
+
+  /* Padding and font-size for profile edit form */
+  .profile-edit {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-edit button {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 1rem;
+  }
+
+  /* No padding for reservations container elements */
+  .reservations-container ul {
+    padding: 0;
+  }
+
+  /* Columning of reservation items */
+  .reservation-item {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  /* Styling for popup */
+  .popup-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .edit-button,
+  .save-button,
+  .cancel-button,
+  .admin-provider-button,
+  .reservation-link,
+  .logout-button {
+    width: 100%;
+    max-width: 90%;
+    box-sizing: border-box;
+    display: block;
+    margin: 10px auto !important;
+    text-align: center;
+  }
+
+  .save-button,
+  .cancel-button {
+    width: 100%;
+    max-width: 90%;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto !important;
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}

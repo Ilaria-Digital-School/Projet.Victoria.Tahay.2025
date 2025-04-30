@@ -1,0 +1,139 @@
+/* --------------- Authentication Page Layout --------------- */
+/* Main container for authentication pages (Login and Signup) */
+.auth-container {
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+
+/* --------------- Title Styling --------------- */
+/* Styles the main heading in the authentication section */
+.auth-container h1 {
+  color: #214754;
+  text-align: center;
+  margin: 10px auto 50px auto;
+  font-size: 60px;
+}
+
+
+
+/* --------------- Input Fields and Buttons --------------- */
+/* General styling for input fields and buttons */
+.auth-container input,
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Styling for input fields */
+.auth-container input {
+   border: 1px solid #cdcdcd; 
+}
+
+
+
+/* --------------- Primary Button --------------- */
+/* Styling for authentication buttons */
+.auth-container button {
+  background-color: #214754;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 0;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.auth-container button:hover {
+  background-color: #31302C;
+  border: #31302C;
+}
+
+
+
+/* --------------- Authentication Links --------------- */
+/* Container for additional authentication-related links */
+.auth-links {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Styles for login/signup links */
+.auth-links a {
+  color: #214754;
+  text-decoration: none;
+}
+
+/* Styling for additional text within the auth links */
+.auth-links p {
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+/* Hover effect for auth links */
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* --------------- Checkbox Styling --------------- */
+/* Ensures checkbox and label are aligned properly */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Positions checkbox correctly */
+.checkbox-label input[type="checkbox"] {
+  margin-right: 10px; 
+  width: auto;
+  margin-top: 18px;
+}
+
+
+
+/* --------------- Terms & Conditions Link --------------- */
+/* Styles for Terms & Conditions link */
+.cgu-link {
+  color: #214754;
+  font-weight: 600;
+}
+
+/* Hover effect for Terms & Conditions link */
+.cgu-link:hover {
+  color: #31302C;
+  text-decoration: underline;
+}
+
+
+
+/* --------------- Responsive Design --------------- */
+/* Adjust layout for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+  /* Reduces width for better mobile responsiveness */
+  .auth-container {
+    width: 60%;
+  }
+
+  /* Reduces font size for smaller screens */
+  .auth-container h1 {
+    font-size: 32px;
+  }
+
+  .auth-container p, .auth-container a{
+    font-size: 16px;
+  }
+}

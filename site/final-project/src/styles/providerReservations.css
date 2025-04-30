@@ -1,0 +1,112 @@
+/* --------------- Global Styles --------------- */
+/* Main container for the page content */
+.container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Styling for section titles */
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+
+
+/* --------------- Date Picker --------------- */
+/* Wrapper for the date selection */
+.date-picker {
+    margin-bottom: 20px;
+}
+
+/* Styling for date picker labels */
+.date-picker label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+
+
+/* --------------- Service Selection Buttons --------------- */
+/* Aligns service selection buttons */
+.service-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Individual button styling */
+.service-buttons button {
+    background-color: #214754;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover effect for buttons */
+.service-buttons button:hover {
+    background-color: #214754;
+}
+
+
+
+/* --------------- Reservations Table --------------- */
+/* Main table container */
+.reservations-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: none;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Styling for table headers and cells */
+.reservations-table th,
+.reservations-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Header row styling */
+.reservations-table th {
+    background-color: #214754;
+    color: white;
+    font-size: 16px;
+}
+
+/* Hover effect for table rows */
+.reservations-table tr:hover {
+    background-color: #214754;
+}
+
+
+
+/* --------------- Reservation Status Colors --------------- */
+/* Smooth background transition for row colors */
+.reservations-table tr {
+    transition: background 0.3s;
+}
+
+/* Green background for confirmed reservations */
+.reservations-table tr.green {
+    background-color: #d4edda; 
+}
+
+/* Red background for canceled reservations */
+.reservations-table tr.red {
+    background-color: #f8d7da; 
+}

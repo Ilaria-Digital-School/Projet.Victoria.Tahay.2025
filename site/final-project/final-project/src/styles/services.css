@@ -1,0 +1,295 @@
+
+/* --------------- Service Section Layout --------------- */
+/* Container for image and description */
+.service-content {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    margin: 50px 60px 65px 60px;
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 0 0 30px 40px;
+}
+
+
+
+/* --------------- Service Image Styles --------------- */
+/* Static service image */
+.service-image img {
+    width: 100%; 
+    height: 350px; 
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+
+
+/* --------------- Image Carousel (React Slick) --------------- */
+/* Container for carousel spa images */
+.service-image-spa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    overflow: hidden;
+}
+
+/* Image inside the carousel */
+.service-image-spa img {
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    object-fit: cover;
+    margin: auto 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Navigation buttons for the carousel */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: auto 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Positioning for navigation buttons */
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Button hover effect */
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* --------------- Service Description --------------- */
+/* Text container, takes 75% of the space */
+.service-description {
+    width: 75%;
+    text-align: justify;
+}
+
+/* Title styles */
+.service-description h1 {
+    font-size: 3rem;
+    color: #214754;
+    margin: 30px 50px;
+}
+
+/* Paragraph styles */
+.service-description p {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+
+
+/* --------------- Buttons for Reservation & Navigation --------------- */
+/* Container for buttons */
+.service-buttons {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px; 
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+/* General button styling */
+.btn-reservation, .btn-retour {
+    text-decoration: none;
+    color: #fff;
+    background-color: #214754;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+/* Hover effect for buttons */
+.btn-reservation:hover, .btn-retour:hover {
+    background-color: #31302C;
+    color: #fff;
+}
+
+
+
+/* --------------- Service Menu Section --------------- */
+/* Full-width menu container */
+.service-menu {
+    width: 100%;
+    margin: auto 0px auto 0px;
+}
+
+/* Title styling */
+.service-menu h1 {
+    margin-bottom: 50px;
+    margin-top: 80px;
+    color: #214754;
+    text-align: center;
+}
+
+/* Category container */
+.menu-category {
+    margin-bottom: 50px;
+}
+
+/* Category title */
+.menu-category h2 {
+    font-size: 30px;
+    color: #214754;
+    margin: 25px auto 20px 50px;
+    padding: 8px 20px;
+    text-align: left;
+}
+
+/* Menu item list */
+.menu-category p {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed #ccc;
+    padding: 8px 20px;
+    font-size: 18px;
+    letter-spacing: 0cap;
+}
+
+/* Highlights menu prices */
+.menu-category p span, .service-container span {
+    font-weight: bold;
+    color: #214754;
+}
+
+
+
+/* ---------------- Responsive Design ---------------- */
+/* Adjusts layout for screens below 1070px */
+@media screen and (max-width: 1070px) {
+    /* Stacks image and text vertically */
+    .service-content {
+        flex-direction: column;
+        padding-top: 40px;
+        padding-left: 0;
+    }
+
+    /* Center services titles */
+    .service-content h1 {
+        padding-top: 0;
+        margin-top: 5px;
+        text-align: center;
+    }
+}
+
+/* Adjusts layout for screens below 760px */
+@media screen and (max-width: 760px) {
+    /* Stacks content vertically */
+    .service-content {
+        flex-direction: column;
+        padding-top: 40px;
+        margin: 20px;
+        padding: 20px 0 0;
+    }
+ 
+    /* Adjusts title sizes */
+    .service-content h1, .service-menu h1 {
+        font-size: 34px;
+        margin: 0 !important;
+    }
+
+    /* Adjusts text alignment */
+    .service-content p {
+        margin: auto 0;
+    }
+
+    /* Adjusts menu title size */
+    .service-menu h2 {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    /* Adjusts menu text size */
+    .service-menu p {
+        font-size: 16px;
+        margin-left: 0;
+    }
+
+    .service-menu span {
+        text-align: right;
+    }
+
+    /* Ensures price and text are well spaced */
+    .menu-category p span {
+        margin-right: 10px; 
+        display: inline-block;
+        font-weight: bold; 
+    }
+}
+
+/* Adjusts layout for screens below 500px */
+@media screen and (max-width: 500px) {
+    /* Reduces image size */
+    .service-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* Adjusts title size */
+    .service-description h1, .service-menu h1 {
+        font-size: 25px;
+        margin: 10px 0 25px;
+    }
+
+    /* Adjusts paragraph styles */
+    .service-description p {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: center;
+    }
+
+    /* Centers buttons */
+    .service-buttons {
+        margin-right: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Reduces button size */
+    .btn-reservation, .btn-retour {
+        padding: 6px 8px;
+        margin-right: 0;
+        font-size: 13px;
+    }
+
+    /* Adjusts menu title spacing */
+    .service-menu h1 {
+        padding-top: 0;
+    }
+
+    /* Reduces menu text size */
+    .service-menu p {
+        font-size: 14px;
+    } 
+}
+ 

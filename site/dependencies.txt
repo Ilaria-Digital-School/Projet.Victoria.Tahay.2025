@@ -1,0 +1,30 @@
+Liste des dépendances à installer pour le projet :
+
+• Pour le Frontend (React) :
+	React & ReactDOM : Base du projet React
+	➜ npm install react react-dom
+
+	React Router DOM : Permet la navigation entre les pages
+	➜ npm install react-router-dom
+
+	Axios : Utilisé pour effectuer des requêtes API et interagir avec le backend
+	➜ npm install axios
+
+	React DatePicker : Utilisé pour la sélection des dates dans les réservations et la gestion admin
+	➜ npm install react-datepicker
+
+	React Calendar : Permet d'afficher un calendrier pour la gestion des réservations
+	➜ npm install react-calendar
+
+
+• Pour le Backend (PHP)
+	MySQLi ou PDO : Nécessaire pour connecter l'application à la base de données
+
+	cURL : Permet la communication avec des API externes
+
+	Sessions et Cookies : Utilisé pour gérer l'authentification des utilisateurs
+
+	JSON : Manipule les données JSON envoyées et reçues par le frontend
+
+
+Le serveur doit être configuré avec Apache ou Nginx, PHP 7.4+ et MySQL/MariaDB.

@@ -1,0 +1,19 @@
+RewriteEngine On
+
+RewriteBase /
+ 
+# Ignorer le dossier opale-blanche-api
+
+RewriteCond %{REQUEST_URI} ^/opale-blanche-api/ [NC]
+
+RewriteRule ^ - [L]
+ 
+# Rediriger tout le reste vers index.html
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule . /index.html [L]
+
+ 

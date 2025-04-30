@@ -1,0 +1,92 @@
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay1@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$gVaweRnFmJ0geFunjq18HO6juHuv86XfIlkj6W9j9Sh0pdfz3vga.
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+❌ Mot de passe incorrect !
+Données reçues : Array
+(
+    [email] => victoria.tahay@gmail.com
+    [password] => Motdepasse46
+)
+
+Hash stocké en base : $2y$10$VlgraSJt0V1/JNlDwMc0/.wEYi7IlSRk5HYW/HFJj/4r5CkOXYXJO
+Données reçues : Array
+(
+    [email] => alibaba@gmail.com
+    [password] => Motdepasse31
+)
+
+❌ Utilisateur non trouvé !

@@ -1,0 +1,25 @@
+/* Ensure only the footer is affected */
+footer {
+    background-color: #31302C; 
+    color: #fff;
+    text-align: center;
+    width: 98%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    letter-spacing: 2px;
+    font-size: 12px;
+    padding-bottom: 12px;
+    max-height: 30px;
+}
+
+/* ---------------- Responsive Design ---------------- */
+/* Reduce font size below 600px */
+@media screen and (max-width: 600px) {
+    footer {
+        font-size: 10px;
+        max-width: 600px;
+    }
+}
