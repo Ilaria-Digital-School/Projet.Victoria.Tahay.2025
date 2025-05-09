@@ -1,19 +1,15 @@
 RewriteEngine On
-
 RewriteBase /
- 
-# Ignorer le dossier opale-blanche-api
 
+# ✅ Rediriger www.victoria-tahay.com vers victoria-tahay.com
+RewriteCond %{HTTP_HOST} ^www\.victoria-tahay\.com$ [NC]
+RewriteRule ^(.*)$ https://victoria-tahay.com/$1 [L,R=301]
+
+# ✅ Ignorer le dossier opale-blanche-api
 RewriteCond %{REQUEST_URI} ^/opale-blanche-api/ [NC]
-
 RewriteRule ^ - [L]
- 
-# Rediriger tout le reste vers index.html
 
+# ✅ Rediriger tout le reste vers index.html (pour React Router)
 RewriteCond %{REQUEST_FILENAME} !-f
-
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteRule . /index.html [L]
-
- 
