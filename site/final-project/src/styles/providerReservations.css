@@ -110,3 +110,16 @@ h2 {
 .reservations-table tr.red {
     background-color: #f8d7da; 
 }
+
+
+
+
+/* --------------- Responsive Design --------------- */
+/* Adjust layout for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    button {
+        font-size: 14px;
+        padding: 5px;
+        margin: 0px;
+    }
+}

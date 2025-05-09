@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/auth.css';
-
+import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
   // State for handling form input data
@@ -36,7 +36,7 @@ const Signup = () => {
     console.log("📤 Données envoyées :", formData); 
 
     // Sends registration data to the backend
-    axios.post('https://victoria-tahay.com/opale-blanche-api/signup.php', formData)
+    axios.post('https://victoria-tahay.com/opale-blanche-api/auth/signup.php', formData)
     .then(res => {
       if (res.data.success) {
         alert('Inscription réussie !');
@@ -51,6 +51,16 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Inscription - L'Opale Blanche</title>
+        <meta
+        name="description"
+        content="Inscription à L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+        />
+        <meta name="keywords" content="Inscription, L'Opale Blanche" />
+    </Helmet>
+
     <div className="auth-container">
       {/* Signup title */}
       <h1>S'inscrire</h1>
@@ -110,6 +120,7 @@ const Signup = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

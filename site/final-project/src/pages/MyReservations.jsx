@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/myReservations.css";
+import { Helmet } from "react-helmet-async";
 
 const MyReservations = () => {
     // State variables for reservations, services, and popups
@@ -19,7 +20,7 @@ const MyReservations = () => {
 
     // Retrieves reservations for the logged-in user
     const fetchReservations = () => {
-        axios.get("https://victoria-tahay.com/opale-blanche-api/getReservations.php", { withCredentials: true })
+        axios.get("https://victoria-tahay.com/opale-blanche-api/users/getReservations.php", { withCredentials: true })
             .then(res => {
                 if (res.data.success) {
                     setReservations(res.data.reservations);
@@ -45,7 +46,7 @@ const MyReservations = () => {
             formData.append("id", selectedReservation.id);
     
             const response = await axios.post(
-                "https://victoria-tahay.com/opale-blanche-api/deleteReservation.php",
+                "https://victoria-tahay.com/opale-blanche-api/users/deleteReservation.php",
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
             );
@@ -71,7 +72,7 @@ const MyReservations = () => {
         setShowEditPopup(true);
 
         try {
-            const response = await axios.get("https://victoria-tahay.com/opale-blanche-api/getServices.php");
+            const response = await axios.get("https://victoria-tahay.com/opale-blanche-api/createResa/getServices.php");
             if (response.data.success) {
                 const filteredServices = response.data.services.filter(service => service.category === reservation.category);
                 setServices(filteredServices);
@@ -91,7 +92,7 @@ const MyReservations = () => {
             formData.append("new_service_id", newServiceId);
     
             const response = await axios.post(
-                "https://victoria-tahay.com/opale-blanche-api/updateReservation.php",
+                "https://victoria-tahay.com/opale-blanche-api/users/updateReservation.php",
                 formData,
                 { withCredentials: true }
             );
@@ -130,6 +131,16 @@ const MyReservations = () => {
     if (!reservations.length) return <p>Aucune réservation trouvée...</p>;
 
     return (
+        <>
+        <Helmet>
+            <title>Mes réservations - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Mes réservations du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="reservations, L'Opale Blanche" />
+        </Helmet>
+
         <div className="container">
             <h2>📅 Mes Réservations</h2>
             <div className="reservation-container">
@@ -158,7 +169,7 @@ const MyReservations = () => {
                                 </button>
                             )}
                             <button onClick={() => confirmDelete(res)} className="delete-button">
-                                Supprimer
+                               Annuler
                             </button>
                         </div>
                     </div>
@@ -177,10 +188,10 @@ const MyReservations = () => {
                 <div className="popup-overlay">
                     <div className="popup">
                         <h2>⚠️ Confirmation</h2>
-                        <p>Voulez-vous vraiment supprimer cette réservation ?</p>
+                        <p>Voulez-vous vraiment annuler cette réservation ?</p>
                         <div className="popup-actions">
-                            <button onClick={handleDelete} className="confirm-button">Oui, supprimer</button>
-                            <button onClick={() => setShowPopup(false)} className="cancel-button">Annuler</button>
+                            <button onClick={handleDelete} className="confirm-button">Oui</button>
+                            <button onClick={() => setShowPopup(false)} className="cancel-button">Retour</button>
                         </div>
                     </div>
                 </div>
@@ -208,6 +219,7 @@ const MyReservations = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 

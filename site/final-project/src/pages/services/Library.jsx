@@ -2,10 +2,20 @@ import React from "react";
 import { Link } from "react-router-dom";
 import libraryImg from "@/assets/servicesimg/bibliotheque.webp";
 import '@/styles/services.css';
+import { Helmet } from "react-helmet-async";
 
 
 const Library = () => {
   return (
+    <>
+        <Helmet>
+            <title>La bibliothèque - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Découvrez notre bibliothèque au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="bibliothèque, L'Opale Blanche" />
+    </Helmet>
     <div className="service-container">
             
            {/* Container for image and description side-by-side */}
@@ -32,7 +42,8 @@ const Library = () => {
                 </div>
             </div>
         </div>
-  );
+        </>
+    );
 };
 
 export default Library;

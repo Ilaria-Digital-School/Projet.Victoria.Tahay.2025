@@ -89,3 +89,52 @@ table {
 .cancel-btn:hover {
     background: #31302C;
 }
+
+
+/* --------------- Responsive Design --------------- */
+/* Adjust layout for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    .admin-container {
+        padding: 10px;
+        margin: 0 5px 50px 5px;
+    }
+
+    h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .date-picker label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .delete-confirm {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .reservations-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .reservations-table table {
+        min-width: 500px; 
+    }
+
+    .reservations-table th,
+    .reservations-table td {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .delete-btn {
+        font-size: 14px;
+        padding: 5px;
+        margin-left: 0;
+    }
+}

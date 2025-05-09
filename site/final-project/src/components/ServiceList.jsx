@@ -10,7 +10,7 @@ const ServiceList = ({ category, onSelectService }) => {
   // Fetch services from API whenever the 'category' prop changes
   useEffect(() => {
     // Sends a request to fetch services based on the selected category
-    axios.get(`https://victoria-tahay.com/opale-blanche-api/getServices.php?category=${category}`)
+    axios.get(`https://victoria-tahay.com/opale-blanche-api/createResa/getServices.php?category=${category}`)
       .then(res => {
         console.log("Données reçues de l'API :", res.data); 
         // Checks if the response is successful and contains an array of services

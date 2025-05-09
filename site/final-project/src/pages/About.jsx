@@ -1,10 +1,26 @@
 import React from "react";
+import { useEffect } from "react";
 import accueilImg from "../assets/img/accueil.webp";
 import servicesImg from "../assets/img/services.webp";
 import "@/styles/about.css" 
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
+    // useEffect(() => {
+    //     console.log("Nouveau titre :", document.title);
+    // }, []);
+      
     return (
+        <>
+        <Helmet>
+            <title>A propos - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="L'histoire du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="A propos, histoire, L'Opale Blanche"/>
+        </Helmet>
+
         <div className="about-page">
              {/* --------------- History Section --------------- */}
             <div className="about">
@@ -52,6 +68,7 @@ const About = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

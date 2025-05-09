@@ -2,9 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import gymImg from "@/assets/servicesimg/salledesport.webp";
 import '@/styles/services.css';
+import { Helmet } from "react-helmet-async";
 
 const Gym = () => {
   return (
+    <>
+    <Helmet>
+        <title>La salle de sport - L'Opale Blanche</title>
+        <meta
+        name="description"
+        content="Découvrez notre salle de sport au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+        />
+        <meta name="keywords" content="Salle de sport, L'Opale Blanche" />
+    </Helmet>
+    
+
     <div className="service-container">
             
            {/* Container for image and description side-by-side */}
@@ -32,7 +44,8 @@ const Gym = () => {
                 </div>
             </div>
         </div>
-  );
+        </>
+    );
 };
 
 export default Gym;

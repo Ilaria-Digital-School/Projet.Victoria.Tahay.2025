@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/contact.css";
 import axios from "axios";
-
+import { Helmet } from "react-helmet-async";
 
 const Contact = () => {
   
@@ -30,28 +30,33 @@ const Contact = () => {
       e.preventDefault();
   
       // Post form data to backend API using Axios
-      axios.post("https://victoria-tahay.com/opale-blanche-api/contact.php", formData)
-        .then((response) => {
-          // Set success message from server response
-          setConfirmation(response.data.message);
-  
-          // Reset form data to initial state
-          setFormData({ name: "", email: "", telephone: "", subject: "", message: "" });
-  
-          // Clear any previous error messages
-          setError("");
-        })
-        .catch((err) => {
-          // Set error message on submission failure
-          setError("Erreur d'envoi, vérifiez les informations saisies.");
-  
-          // Clear any previous confirmation messages
-          setConfirmation("");
-        });
+      axios.post("https://victoria-tahay.com/opale-blanche-api/contact.php", formData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
+      .then((response) => {
+        setConfirmation(response.data.message);
+        setFormData({ name: "", email: "", telephone: "", subject: "", message: "" });
+        setError("");
+      })
+      .catch((err) => {
+        setError("Erreur d'envoi, vérifiez les informations saisies.");
+        setConfirmation("");
+      });      
     };
   
   
     return (
+      <>
+      <Helmet>
+        <title>Contact - L'Opale Blanche</title>
+        <meta
+        name="description"
+        content="Contacter le chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+        />
+        <meta name="keywords" content="contact, L'Opale Blanche" />
+      </Helmet>
+
       <div className="contact-page">
         <div className="informations-contact">
           
@@ -95,6 +100,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      </>
     );
 };
   

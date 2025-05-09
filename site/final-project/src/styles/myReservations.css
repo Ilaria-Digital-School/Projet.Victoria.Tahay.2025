@@ -243,3 +243,19 @@ p {
 .back-button:hover {
     background-color: #444;
 }
+
+
+/* --------------- Responsive Design --------------- */
+/* Adjust layout for screens smaller than 600px */
+@media screen and (max-width: 600px) {
+    /* Reduces padding */
+    .container h2 {
+      padding-top: 0;
+    }
+
+    .delete-button, .edit-button {
+        width: 220px;
+        min-width: unset;
+        font-size: 15px;
+    }
+}  

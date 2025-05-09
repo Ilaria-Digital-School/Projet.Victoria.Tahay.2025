@@ -2,11 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import barImg from "@/assets/servicesimg/bibliotheque.webp";
 import '@/styles/services.css';
+import { Helmet } from "react-helmet-async";
 
 const Bar = () => {
-  return (
-    <div className="service-container">
-            
+    return (
+        <>
+        <Helmet>
+            <title>Le Bar à Jeux - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Découvrez notre bar à jeux au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux, ouvert tous les jours de 14h à 2h."
+            />
+            <meta name="keywords" content="bar à jeux, détente, chalet, jeux de société, L'Opale Blanche" />
+        </Helmet>
+    
+        <div className="service-container">
+                
            {/* Container for image and description side-by-side */}
            <div className="service-content">
 
@@ -30,7 +41,8 @@ const Bar = () => {
                 </div>
             </div>
         </div>
-  );
+        </>
+    );
 };
 
 export default Bar;

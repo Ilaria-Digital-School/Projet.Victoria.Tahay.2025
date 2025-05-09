@@ -4,6 +4,7 @@ import ServiceList from "../components/ServiceList";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 import "../styles/reservation.css";
+import { Helmet } from "react-helmet-async";
 
 const Reservation = () => {
   // State variables
@@ -20,7 +21,7 @@ const Reservation = () => {
 
   // Fetches user authentication status
   useEffect(() => {
-    axios.get('https://victoria-tahay.com/opale-blanche-api/checkAuth.php', { withCredentials: true })
+    axios.get('https://victoria-tahay.com/opale-blanche-api/auth/checkAuth.php', { withCredentials: true })
       .then(res => {
         if (res.data.authenticated) {
           setUser(res.data.user);
@@ -48,7 +49,7 @@ const Reservation = () => {
         people: people,
       };
   
-      axios.post('https://victoria-tahay.com/opale-blanche-api/getSlots.php', requestData)
+      axios.post('https://victoria-tahay.com/opale-blanche-api/createResa/getSlots.php', requestData)
         .then(res => {
           // Updates slots directly from API response
           if (res.data.success && Array.isArray(res.data.slots)) {
@@ -91,25 +92,46 @@ const Reservation = () => {
       people,
     };
 
-    axios.post('https://victoria-tahay.com/opale-blanche-api/createReservation.php', requestData, {
+    axios.post('https://victoria-tahay.com/opale-blanche-api/createResa/createReservation.php', requestData, {
       withCredentials: true,
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res => {
       if (res.data.success) {
         setConfirmation("✅ Réservation confirmée !");
-        // Removes the selected time slot from the available list
+    
+        // Supprime le créneau réservé de la liste
         setAvailableSlots(prevSlots => prevSlots.filter(slot => slot.time_slot !== time_slot));
+    
+        // Réinitialise les champs du formulaire
+        // setSelectedCategory(null);
+        // setSelectedService(null);
+        setDate(new Date());
+        setTimeSlot("");
+        setPeople(1);
+        setAvailableSlots([]);
+        
       } else {
-        setConfirmation(" Erreur : " + (res.data.error || "La réservation n'a pas pu être effectuée."));
+        setConfirmation("Erreur : " + (res.data.error || "La réservation n'a pas pu être effectuée."));
       }
     })
+    
     .catch(err => {
       setConfirmation("Erreur de connexion avec le serveur.");
-    });
+    });    
   };
 
   return (
+    <>
+    <Helmet>
+        <title>Réservation - L'Opale Blanche</title>
+        <meta
+        name="description"
+        content="Réservez nos services au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+        />
+        <meta name="keywords" content="services, bien-être, réservation, L'Opale Blanche" />
+    </Helmet>
+
     <div className="reservation-page">
       <h1>Réservez votre service</h1>
       {!user ? (
@@ -134,7 +156,7 @@ const Reservation = () => {
               {/* Date selection */}
               <p>📅 Date</p>
               <div className="calendar-container">
-                <Calendar onChange={setDate} value={date_resa} />
+                <Calendar onChange={setDate} value={date_resa} minDate={new Date()}/>
               </div>
 
               {/* Displays error message if no slots are available */}
@@ -177,6 +199,7 @@ const Reservation = () => {
         </>
       )}
     </div>
+    </>
   );
 };
 

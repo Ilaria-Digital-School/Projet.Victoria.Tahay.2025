@@ -10,4 +10,4 @@ $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https:
 $full_url = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 echo "🌐 URL complète : " . $full_url;
-?>
+

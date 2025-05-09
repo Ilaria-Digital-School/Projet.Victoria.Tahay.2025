@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 
 // Main App component and global styles
 import App from "./App.jsx";
+import { HelmetProvider } from "react-helmet-async";
 import "./styles/index.css";
 
 // React Router for navigation
@@ -67,6 +68,8 @@ const router = createBrowserRouter([
 // Render the React application
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </React.StrictMode>
 );

@@ -1,29 +1,52 @@
 import { useEffect, useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css"; 
 import "../styles/adminReservations.css";
+import { Helmet } from "react-helmet-async";
 
 const AdminReservations = () => {
-    
     const [reservations, setReservations] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [selectedDate, setSelectedDate] = useState(new Date()); 
+    const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [confirmDelete, setConfirmDelete] = useState(null);
+    const [userRole, setUserRole] = useState(null);
+    const navigate = useNavigate();
 
-    // Fetch reservations based on the selected date and category
+    const fetchUserRole = useCallback(async () => {
+        try {
+            const response = await axios.get("https://victoria-tahay.com/opale-blanche-api/auth/getUserRole.php", {
+                withCredentials: true
+            });
+
+            if (response.data.success) {
+                const role = response.data.role;
+                setUserRole(role);
+
+                if (role !== "admin") {
+                    navigate("/profile");
+                }
+            } else {
+                setError("Accès non autorisé.");
+                navigate("/login");
+            }
+        } catch (error) {
+            console.error("Erreur lors de la récupération du rôle :", error);
+            setError("Erreur de connexion.");
+            navigate("/login");
+        }        
+    }, [navigate]);
+
     const fetchReservations = useCallback(() => {
         if (!selectedCategory) return;
 
-        // Formats date to YYYY-MM-DD
-        const formattedDate = selectedDate.toISOString().split('T')[0];
+        const formattedDate = selectedDate.toISOString().split("T")[0];
+        setLoading(true);
 
-        console.log("🔍 Envoi de la requête avec : date =", formattedDate, ", catégorie =", selectedCategory);
-
-        axios.get("https://victoria-tahay.com/opale-blanche-api/getAllReservations.php", {
+        axios.get("https://victoria-tahay.com/opale-blanche-api/admin/getAllReservations.php", {
             params: {
                 date: formattedDate,
                 category: selectedCategory
@@ -31,45 +54,43 @@ const AdminReservations = () => {
             withCredentials: true
         })
         .then(res => {
-            console.log("📥 Réponse API getAllReservations :", res.data);
             if (res.data.success) {
                 setReservations(res.data.reservations);
             } else {
-                console.error("❌ Erreur API :", res.data.error);
                 setError(res.data.error || "Une erreur est survenue.");
             }
             setLoading(false);
         })
-        .catch(error => {
-            console.error("❌ Erreur de connexion avec le serveur :", error);
+        .catch(() => {
             setError("Erreur de connexion avec le serveur.");
             setLoading(false);
         });
     }, [selectedDate, selectedCategory]);
 
-    // Fetch reservations when category changes
+    useEffect(() => {
+        fetchUserRole();
+    }, [fetchUserRole]);
+
     useEffect(() => {
         fetchReservations();
     }, [selectedCategory, fetchReservations]);
 
-    // Handles delete confirmation popup
     const handleDelete = (id) => {
+        console.log("🧨 Bouton 'Annuler' cliqué pour ID :", id);
         setConfirmDelete(id);
     };
 
-    // Handles reservation deletion after confirmation
     const confirmDeleteAction = () => {
         if (!confirmDelete) return;
-    
-        console.log("🗑 Envoi de la requête de suppression avec l'ID :", confirmDelete); // 🔍 Vérification avant l'envoi
-    
-        axios.post("https://victoria-tahay.com/opale-blanche-api/adminDeleteReservation.php", 
-            { id: confirmDelete }, 
-            { headers: { "Content-Type": "application/json" } }, // 🔥 Ajout des headers pour JSON
-            { withCredentials: true }
+
+        axios.post("https://victoria-tahay.com/opale-blanche-api/admin/adminDeleteReservation.php",
+            { id: confirmDelete },
+            {
+                headers: { "Content-Type": "application/json" },
+                withCredentials: true
+            }
         )
         .then(res => {
-            console.log("📥 Réponse API Suppression :", res.data);
             if (res.data.success) {
                 alert("Réservation supprimée !");
                 fetchReservations();
@@ -77,44 +98,51 @@ const AdminReservations = () => {
                 alert(res.data.error || "Erreur lors de la suppression.");
             }
         })
-        .catch(error => {
-            console.error("❌ Erreur lors de la suppression :", error);
+        .catch(() => {
             alert("Erreur de connexion avec le serveur.");
         });
-    
+
         setConfirmDelete(null);
     };
-    
-    // Displays loading or error messages if applicable
+
     if (loading) return <p>Chargement...</p>;
     if (error) return <p style={{ color: "red" }}>❌ Erreur : {error}</p>;
+    if (userRole && userRole !== "admin") return null;
 
     return (
+        <>
+        <Helmet>
+            <title>Administrateur, gestion des réservations - L'Opale Blanche</title>
+            <meta name="description" content="Les réservations du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux." />
+            <meta name="keywords" content="reservations, administrateur, L'Opale Blanche" />
+        </Helmet>
+
         <div className="admin-container">
             <h2>📅 Gestion des Réservations</h2>
 
-            {/* Date Picker for selecting reservation date */}
             <div className="date-picker">
                 <label><strong>Sélectionnez une date :</strong></label>
-                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} />
+                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} dateFormat="dd-MM-yyyy" />
             </div>
 
-            {/* Buttons for selecting reservation category */}
             <div className="category-buttons">
                 <button onClick={() => setSelectedCategory("Restaurant")}>Restaurant</button>
                 <button onClick={() => setSelectedCategory("Spa")}>Spa</button>
             </div>
 
-            {/* Delete confirmation popup */}
             {confirmDelete && (
-                <div className="delete-confirm">
-                    <p>⚠️ Voulez-vous vraiment supprimer cette réservation ?</p>
-                    <button onClick={confirmDeleteAction} className="confirm-btn">Oui</button>
-                    <button onClick={() => setConfirmDelete(null)} className="cancel-btn">Non</button>
+                <div className="popup-overlay">
+                    <div className="popup">
+                        <h2>⚠️ Annuler cette réservation ?</h2>
+                        <p>Cette action est irréversible.</p>
+                        <div className="popup-actions">
+                            <button className="confirm-button" onClick={confirmDeleteAction}>Oui</button>
+                            <button className="cancel-button" onClick={() => setConfirmDelete(null)}>Non</button>
+                        </div>
+                    </div>
                 </div>
             )}
 
-            {/* Reservations table */}
             {reservations.length > 0 ? (
                 <table className="reservations-table">
                     <thead>
@@ -128,13 +156,13 @@ const AdminReservations = () => {
                     </thead>
                     <tbody>
                         {reservations.map(res => (
-                            <tr key={res.id}>
+                            <tr key={res.reservation_id}>
                                 <td>{res.time_slot}</td>
                                 <td>{res.client_name}</td>
                                 <td>{res.servicename}</td>
                                 <td>{res.people}</td>
                                 <td>
-                                    <button className="delete-btn" onClick={() => handleDelete(res.id)}>Supprimer</button>
+                                    <button className="delete-btn" onClick={() => handleDelete(res.reservation_id)}>Annuler</button>
                                 </td>
                             </tr>
                         ))}
@@ -144,6 +172,7 @@ const AdminReservations = () => {
                 <p>Aucune réservation trouvée.</p>
             )}
         </div>
+        </>
     );
 };
 

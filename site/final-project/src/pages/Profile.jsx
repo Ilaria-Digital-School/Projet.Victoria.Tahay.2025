@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/profile.css';
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
     // State variables for user information and role
@@ -22,7 +23,7 @@ const Profile = () => {
         }
 
         // Fetch user details
-        axios.post('https://victoria-tahay.com/opale-blanche-api/getUser.php', { email: userEmail })
+        axios.post('https://victoria-tahay.com/opale-blanche-api/auth/getUser.php', { email: userEmail })
         .then(res => {
             console.log("Réponse de l'API getUser.php :", res.data);
             if (res.data.success) {
@@ -41,7 +42,7 @@ const Profile = () => {
         });
 
         // Fetch user role from `getUserRole.php`
-        axios.get('https://victoria-tahay.com/opale-blanche-api/getUserRole.php', { withCredentials: true })
+        axios.get('https://victoria-tahay.com/opale-blanche-api/auth/getUserRole.php', { withCredentials: true })
         .then(res => {
             console.log("Réponse de l'API getUserRole.php :", res.data);
             if (res.data.success) {
@@ -54,7 +55,7 @@ const Profile = () => {
 
     // Handles user logout
     const handleLogout = () => {
-        axios.get('https://victoria-tahay.com/opale-blanche-api/logout.php', { withCredentials: true })
+        axios.get('https://victoria-tahay.com/opale-blanche-api/auth/logout.php', { withCredentials: true })
         .then(() => {
             localStorage.removeItem('userEmail'); 
             localStorage.removeItem('userRole'); 
@@ -71,7 +72,7 @@ const Profile = () => {
 
     // Handles profile update request
     const handleUpdate = () => {
-        axios.post('https://victoria-tahay.com/opale-blanche-api/updateProfile.php', { 
+        axios.post('https://victoria-tahay.com/opale-blanche-api/users/updateProfile.php', { 
             email: user.email, 
             newEmail: formData.email, 
             phone: formData.phone, 
@@ -83,7 +84,7 @@ const Profile = () => {
             if (res.data.success) {
                 alert("Profil mis à jour !");
                 // Refreshes user data after update
-                axios.post('https://victoria-tahay.com/opale-blanche-api/getUser.php', { email: formData.email })
+                axios.post('https://victoria-tahay.com/opale-blanche-api/auth/getUser.php', { email: formData.email })
                 .then(response => {
                     if (response.data.success) {
                         setUser(response.data.user);
@@ -106,6 +107,16 @@ const Profile = () => {
     if (!user) return <p>Chargement...</p>;
 
     return (
+        <>
+        <Helmet>
+            <title>Profil - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Profil utilisateur de L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="profil, L'Opale Blanche" />
+        </Helmet>
+
         <div className="profile-container">
             {/* Admin & Service Provider Buttons */}
             {(userRole === "provider_spa" || userRole === "provider_restaurant" || userRole === "admin") && (
@@ -152,6 +163,7 @@ const Profile = () => {
             </button>
         
         </div>
+        </>
     );
 };
 

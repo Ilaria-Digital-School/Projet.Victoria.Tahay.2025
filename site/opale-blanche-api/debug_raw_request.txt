@@ -1,1 +1,0 @@
-{"user_id":19,"service_id":13,"category":"Soins et massages","date_resa":"2025-04-04","time_slot":"10:00:00","people":"2"}

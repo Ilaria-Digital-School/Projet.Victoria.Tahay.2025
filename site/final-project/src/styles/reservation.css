@@ -142,17 +142,33 @@ p {
 
 /* Styling for month navigation buttons */
 .react-calendar__navigation button {
-    background: none;
+    background: none !important;
     border: none;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    box-shadow: none;
+    transition: none;
+}
+
+/* Delete hover effects */
+.react-calendar__navigation button:hover:enabled {
+    background: none !important;
+}
+  
+/* Delete active effects */
+.react-calendar__navigation button:enabled:active {
+    background: none !important;
+}
+  
+/* Delete focus effects */
+.react-calendar__navigation button:focus {
+    outline: none;
 }
 
 /* Default style for the previous double arrow button */
 .react-calendar__navigation__arrow.react-calendar__navigation__prev2-button {
-    background: #214754;
+    background: none;
     color: white;
     border: none;
     font-size: 18px;
@@ -163,7 +179,7 @@ p {
 
 /* Hover effect for the navigation buttons */
 .react-calendar__navigation__arrow.react-calendar__navigation__prev2-button:hover {
-    background: #214754;
+    background: none;
     color: #31302C;
     transform: scale(1.1);
     border-radius: 5px;
@@ -236,7 +252,7 @@ p {
 
 /* Hover effect for each day tile */
 .react-calendar__tile:hover {
-    background: #f0f8ff;
+    background: none;
     transform: scale(1.05);
 }
 
@@ -264,5 +280,6 @@ p {
     .categories button {
         font-size: 14px;
         padding: 10px 8px;
+        margin-top: 0;
     }
 }

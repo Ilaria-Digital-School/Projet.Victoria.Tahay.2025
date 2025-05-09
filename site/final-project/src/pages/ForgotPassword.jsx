@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { Helmet } from "react-helmet-async";
 
 const ForgotPassword = () => {
   // State variables for email input and response message
@@ -11,7 +12,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     console.log("Tentative d'envoi du formulaire..."); 
   
-    axios.post('https://victoria-tahay.com/opale-blanche-api/forgotPassword.php', { email })
+    axios.post('https://victoria-tahay.com/opale-blanche-api/auth/forgotPassword.php', { email })
       .then(res => {
         console.log(res.data);
         setMessage(res.data.message + (res.data.resetLink ? ` : ${res.data.resetLink}` : ""));
@@ -25,6 +26,16 @@ const ForgotPassword = () => {
   
 
   return (
+    <>
+    <Helmet>
+        <title>Mot de passe oublié - L'Opale Blanche</title>
+        <meta
+        name="description"
+        content="Mot de passe oublié, chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+        />
+      <meta name="keywords" content="Mot de passe oublié, L'Opale Blanche" />
+    </Helmet>
+
     <div className="auth-container">
       <h1>Réinitialiser le mot de passe</h1>
 
@@ -42,6 +53,7 @@ const ForgotPassword = () => {
       {/* Displays response message */}
       {message && <p>{message}</p>}
     </div>
+    </>
   );
 };
 

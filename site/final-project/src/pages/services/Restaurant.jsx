@@ -2,11 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import restaurantImg from "@/assets/servicesimg/restaurant.webp";
 import '@/styles/services.css';
+import { Helmet } from "react-helmet-async";
 
 
 // Restaurant service page component
 const Restaurant = () => {
     return (
+        <>
+        <Helmet>
+            <title>Le restaurant - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Découvrez notre restaurant au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="Restaurant, L'Opale Blanche" />
+        </Helmet>
+
         <div className="service-container">
             
            {/* Container for image and description side-by-side */}
@@ -119,6 +130,7 @@ const Restaurant = () => {
                 </div>
             </section>
         </div>
+        </>
     );
 };
 

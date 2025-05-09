@@ -16,6 +16,9 @@ Liste des dépendances à installer pour le projet :
 	React Calendar : Permet d'afficher un calendrier pour la gestion des réservations
 	➜ npm install react-calendar
 
+	React Helmet : Pour que chaque page ait un titre différent dans l'onglet
+	➜ npm install react-helmet-async
+
 
 • Pour le Backend (PHP)
 	MySQLi ou PDO : Nécessaire pour connecter l'application à la base de données

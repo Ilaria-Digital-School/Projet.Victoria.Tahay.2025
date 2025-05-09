@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/auth.css';
-
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   // States for email and password
@@ -16,7 +16,7 @@ const Login = () => {
   
     // Sends login request to the API
     axios.post(
-      'https://victoria-tahay.com/opale-blanche-api/login.php',
+      'https://victoria-tahay.com/opale-blanche-api/auth/login.php',
       { email, password }, 
       // Sends a JavaScript object, no need for JSON.stringify
       {
@@ -52,6 +52,15 @@ const Login = () => {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Connexion - L'Opale Blanche</title>
+      <meta
+      name="description"
+      content="Connexion au site de L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+      />
+      <meta name="keywords" content="connexion, L'Opale Blanche" />
+    </Helmet>
     <div className="auth-container">
       {/* Login title */}
       <h1>Connexion</h1>
@@ -73,6 +82,7 @@ const Login = () => {
           </div>
       </form>
     </div>
+    </>
   );
 };
 

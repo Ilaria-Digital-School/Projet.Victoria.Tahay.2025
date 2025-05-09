@@ -176,11 +176,13 @@ small {
     .contact-page {
         padding-left: 40px;
         width: 75%;
-        margin-left: 10px;
+        margin-left: 5px;
     }
 
     .informations-contact h1 {
         font-size: 28px;
+        padding-top: 0;
+        margin-top: 0;
     }
 
     .formulaire-contact input,

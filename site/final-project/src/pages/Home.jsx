@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom"; 
 import { useLocation } from "react-router-dom";
 import "../styles/home.css"; 
+import { Helmet } from "react-helmet-async";
 
 // Importing service images
 import restaurant from "../assets/img/restaurant.webp";
@@ -93,6 +94,16 @@ const Home = () => {
 
 
     return (
+        <>
+        <Helmet>
+            <title>L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="L'Opale Blanche, le chalet sérénité : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="services, bien-être, montagne, restaurant, L'Opale Blanche" />
+        </Helmet>
+
         <div className="home">
             {/* Chalet image with button */}
             <div className="home-hero">
@@ -126,19 +137,36 @@ const Home = () => {
 
             {/* Services Section */}
             <section className="our-services" id="our-services">
-                <h1>Nos Services</h1>
-                <div className="services-gallery">
-                    {services.map((service, index) => (
-                            <Link key={index} to={service.link} className="item-site"> 
-                            <img src={service.src} alt={service.alt} />
-                            <div className="overlay">
-                                <p>{service.text}</p>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </section>
+  <h1>Nos Services</h1>
+
+  {/* Services avec réservation */}
+  <h2 className="service-group-title">ㅡ Sur réservation ㅡ</h2>
+  <div className="services-gallery">
+    {services.slice(0, 3).map((service, index) => (
+      <Link key={index} to={service.link} className="item-site"> 
+        <img src={service.src} alt={service.alt} />
+        <div className="overlay">
+          <p>{service.text}</p>
         </div>
+      </Link>
+    ))}
+  </div>
+
+  {/* Services sans réservation */}
+  <h2 className="service-group-title">ㅡ Sans réservation ㅡ</h2>
+  <div className="services-gallery">
+    {services.slice(3).map((service, index) => (
+      <Link key={index + 3} to={service.link} className="item-site"> 
+        <img src={service.src} alt={service.alt} />
+        <div className="overlay">
+          <p>{service.text}</p>
+        </div>
+      </Link>
+    ))}
+  </div>
+</section>
+        </div>
+        </>
     );
 };
 

@@ -207,11 +207,14 @@
     .service-content {
         flex-direction: column;
         padding-top: 40px;
+        margin: 20px;
+        padding: 20px 0 0;
     }
  
     /* Adjusts title sizes */
     .service-content h1, .service-menu h1 {
         font-size: 34px;
+        margin: 0 !important;
     }
 
     /* Adjusts text alignment */
@@ -222,11 +225,13 @@
     /* Adjusts menu title size */
     .service-menu h2 {
         font-size: 18px;
+        margin-left: 0;
     }
 
     /* Adjusts menu text size */
     .service-menu p {
         font-size: 16px;
+        margin-left: 0;
     }
 
     .service-menu span {

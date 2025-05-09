@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "@/styles/services.css";
+import { Helmet } from "react-helmet-async";
 
 // Import images manually
 import jacuzziImg from "../../assets/servicesimg/spa/jacuzzi.webp";
@@ -25,6 +26,16 @@ const Spa = () => {
   };
 
   return (
+    <>
+      <Helmet>
+          <title>Le spa - L'Opale Blanche</title>
+          <meta
+          name="description"
+          content="Découvrez notre spa au cœur du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+          />
+          <meta name="keywords" content="Spa, L'Opale Blanche" />
+      </Helmet>
+
     <div className="service-container">
       {/* Container for slideshow and description */}
       <div className="service-content">
@@ -54,6 +65,7 @@ const Spa = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

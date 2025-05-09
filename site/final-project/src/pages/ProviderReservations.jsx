@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker"; 
 import "react-datepicker/dist/react-datepicker.css"; 
 import "../styles/providerReservations.css";
+import { Helmet } from "react-helmet-async";
 
 const ProviderReservations = () => {
     // State variables
@@ -29,7 +30,7 @@ const ProviderReservations = () => {
     
         console.log("🔍 Envoi de la requête avec : date =", formattedDate, ", service =", selectedService);
     
-        axios.get(`https://victoria-tahay.com/opale-blanche-api/getReservationsProvider.php`, {
+        axios.get(`https://victoria-tahay.com/opale-blanche-api/providers/getReservationsProvider.php`, {
             params: {
                 date: formattedDate, 
                 service: selectedService
@@ -76,7 +77,7 @@ const ProviderReservations = () => {
     // Fetches the user role
     const fetchUserRole = async () => {
         try {
-            const response = await axios.get("https://victoria-tahay.com/opale-blanche-api/getUserRole.php", { withCredentials: true });
+            const response = await axios.get("https://victoria-tahay.com/opale-blanche-api/auth/getUserRole.php", { withCredentials: true });
             if (response.data.success) {
                 setUserRole(response.data.role);
                 setLoading(false);
@@ -132,13 +133,23 @@ const ProviderReservations = () => {
     if (error) return <p style={{ color: "red" }}> Erreur : {error}</p>;
 
     return (
+        <>
+        <Helmet>
+            <title>Gestionnaire, gestion des réservations - L'Opale Blanche</title>
+            <meta
+            name="description"
+            content="Réservations du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+            />
+            <meta name="keywords" content="reservations, gestionnaire, L'Opale Blanche" />
+        </Helmet>
+
         <div className="container">
             <h2>📅 Réservations ({userRole === "provider_restaurant" ? "Restaurant" : "Spa / Soins"})</h2>
 
             {/* Date picker */}
             <div className="date-picker">
                 <label><strong>Sélectionnez une date :</strong></label>
-                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} />
+                <DatePicker selected={selectedDate} onChange={(date) => setSelectedDate(date)} dateFormat="dd-MM-yyyy"/>
             </div>
 
             {/* Service selection buttons */}
@@ -189,6 +200,7 @@ const ProviderReservations = () => {
                 <p>Aucune réservation trouvée.</p>
             )}
         </div>
+        </>
     );
 };
 

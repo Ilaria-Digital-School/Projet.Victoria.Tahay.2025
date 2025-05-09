@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/profile.css"; 
+import { Helmet } from "react-helmet-async";
 
 const EditReservation = () => {
   // Get the reservation ID from the URL parameters
@@ -30,7 +31,7 @@ const EditReservation = () => {
   // Handle reservation update
   const handleUpdate = (e) => {
     e.preventDefault();
-    axios.post(`https://victoria-tahay.com/api/updateReservation.php`, {
+    axios.post(`https://victoria-tahay.com/opale-blanche-api/users/updateReservation.php`, {
       id,
       date,
       time,
@@ -47,6 +48,16 @@ const EditReservation = () => {
   if (!reservation) return <p>Loading reservation details...</p>;
 
   return (
+    <>
+    <Helmet>
+      <title>Modifier une réservation - L'Opale Blanche</title>
+      <meta
+      name="description"
+      content="Modifier une réservation du chalet L'Opale Blanche : un espace convivial, rustique, et chaleureux."
+      />
+      <meta name="keywords" content="reservation, L'Opale Blanche" />
+    </Helmet>
+
     <div className="edit-reservation-container">
       <h1>Modifier ma réservation</h1>
 
@@ -69,6 +80,7 @@ const EditReservation = () => {
       {/* Displays confirmation message */}
       {confirmation && <p className="confirmation">{confirmation}</p>}
     </div>
+    </>
   );
 };
 

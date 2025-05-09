@@ -7,6 +7,7 @@
     margin-bottom: 0;
     margin-top: -70px;
     position: relative;
+    max-width: 100vm;
 }
 
 /* Background image for the hero section. Ensures the image covers the entire section */
@@ -43,6 +44,7 @@
     left: 50%;
     transform: translateX(-50%);
     transition: background-color 0.5s ease-in-out, transform 0.8s;
+    box-sizing: border-box;
 }
 
 /* Changes background color on hover for a smooth transition */
@@ -114,7 +116,13 @@ strong {
     font-weight: 700;
 }
 
-
+.service-group-title {
+    font-size: 18px;
+    margin: 15px 0 10px;
+    text-align: center;
+    border-bottom: none;
+}
+  
 
 /* --------------- Services button --------------- */
 /* Button under the presentation section */
@@ -151,6 +159,7 @@ strong {
 /* Adds padding to services title */
 .our-services h1 {
     padding-top: 30px;
+    margin-bottom: 5px;
 }
 
 /* Displays services in a flexible grid */
@@ -291,6 +300,12 @@ strong {
     .item-site {
         min-width: 85%; 
     }
+
+    .item-site .overlay {
+        opacity: 1;
+        position: static;
+        background-color: #31302C;
+    }   
 }
 
 /* Design for screens smaller than 500px */
@@ -298,6 +313,8 @@ strong {
     /* Adjusts button for very small screens */
     .discover-button{
         font-size: 18px; 
+        left: 45%;
+        padding: 10px 16px;      
     }
 
     /* Adjusts titles sizes for very small screens */
